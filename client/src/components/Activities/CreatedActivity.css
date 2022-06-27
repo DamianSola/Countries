@@ -1,0 +1,30 @@
+.contt{
+    display: flex;
+    flex-direction:column;
+    justify-content:space-around;
+    text-align: center;
+}
+
+.container-creator{
+    display: flex;
+    flex-direction: row;
+    margin: 100px;
+    margin-left: 25%;
+    background: url("https://us.123rf.com/450wm/123bogdan/123bogdan1009/123bogdan100900056/7814200-postal-vintage-en-blanco.jpg?ver=6");
+    padding: 5px;
+    width: 35rem;
+    text-align: center;
+}
+
+.elemet{
+    margin-top: 25px;
+    font-size: large;
+}
+
+#agr{
+    border-style: none;
+    color: rgb(212, 163, 29);
+}
+#agr:hover{
+    background-color: rgb(28, 136, 199);
+}

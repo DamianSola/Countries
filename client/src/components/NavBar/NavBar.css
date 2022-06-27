@@ -1,0 +1,29 @@
+.container-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(28, 136, 199);
+    padding: 5px  5px;
+   
+}
+
+#logo{
+    display: flex;
+    background-color: rgb(28, 136, 199);
+    padding: 4px auto;
+}
+
+#search{
+    display:flex;
+    flex-direction: row-reverse;
+}
+
+.links{
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(212, 163, 29);
+    background-color: rgb(28, 136, 199);
+}
+.links:hover{
+    color: rgb(240, 188, 47)
+}

@@ -1,0 +1,27 @@
+#btn{
+    height: 40px;
+}
+#btn:hover{
+    /* height: 45px; */
+    animation:both;
+}
+.cont-intro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 280px;
+}
+
+.texto{
+    display: inline-block;
+    padding: 30px;
+    background: url("https://us.123rf.com/450wm/123bogdan/123bogdan1009/123bogdan100900056/7814200-postal-vintage-en-blanco.jpg?ver=6");
+    /* background: url("https://i.pinimg.com/originals/84/19/b3/8419b3ea5eadd9df1db014f15db33813.jpg"); */
+    background-size: contain;
+    background-repeat: no-repeat;
+    color: rgb(0, 0, 0);
+    font-size: large;
+    font-family: cursive;
+    width: 630px;
+    height: 400px;
+}

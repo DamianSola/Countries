@@ -1,0 +1,18 @@
+.countries-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.filter {
+    display: flex;
+    flex-direction:row;
+}
+
+.btn{
+    color:black;
+    background-color:whitesmoke;
+    border-radius: 10px;
+}

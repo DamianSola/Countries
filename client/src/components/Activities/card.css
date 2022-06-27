@@ -1,0 +1,7 @@
+.cards{
+    max-width:820px;
+    margin: 20px;
+    width: 18rem;
+    border: solid 5px;
+    background-color:  rgba(255, 254, 254, 0.705);
+}

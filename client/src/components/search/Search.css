@@ -1,0 +1,11 @@
+#busqueda{
+    background-color:rgb(28, 136, 199); 
+    color: rgb(212, 163, 29);
+    border-radius: 5px;
+    border-style: none;
+}
+
+#busqueda:hover{
+    background-color: rgb(212, 163, 29);
+    color: rgb(28, 136, 199);
+}
