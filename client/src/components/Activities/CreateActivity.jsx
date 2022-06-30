@@ -30,12 +30,13 @@ const CreateActivity = () =>{
     function handleOnChange(event){
         console.log(event.target.value)
         if(event.target.name === "country"){
+            if(!activity.country.includes(event.target.value)){
             const filt = countries.find(e => e.id === event.target.value)
             setActivity({
                 ...activity,
                 [event.target.name]: activity.country.concat(event.target.value)
             })
-            setOnlyCountries([...onlyCountries, filt])
+            setOnlyCountries([...onlyCountries, filt])}
             console.log(onlyCountries)
         }else{
             setActivity({
@@ -54,6 +55,17 @@ const CreateActivity = () =>{
         setActivity({})
     }
 
+    const deleteCountry = (e) => {
+        let id = e.target.value
+        console.log(onlyCountries.map(e => e.id))
+        setOnlyCountries([...onlyCountries.filter(e => e.id !== id)])
+        setActivity({
+            ...activity,
+            country: [...activity.country.filter(e => e !== id)]
+        })
+        console.log(onlyCountries)
+    }
+
 
     useEffect(()=>{
         if(countriesShow.length < 250) dispatch(getAllCountries());
@@ -63,7 +75,7 @@ const CreateActivity = () =>{
     
     return(
         <div className="contt">
-            {/* <div><NavBar/></div> */}
+            <div><NavBar/></div>
             <div className="container-creator">
             <form onSubmit={handleSubmit}>
                 <div className="elemet">
@@ -93,17 +105,17 @@ const CreateActivity = () =>{
                 <button type="submit" id="agr">Agregar</button>
                 </div>
             </form>
-            </div>
             <div className="showcountry">
 
             {onlyCountries && onlyCountries.map(e => {
                 return(
                     <div key={e.id} className="show">
                         <img src={e.flag} width="70px" />
-                        <button id="delete-count">x</button>  
+                        <button id="delete-count" onClick={deleteCountry} value={e.id}>x</button>  
                     </div>
                 )
             })}
+            </div>
             </div>
         </div>
     )
