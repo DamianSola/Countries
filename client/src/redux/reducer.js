@@ -3,6 +3,7 @@
 const initialState= {
     countriesShow: [],
     countries: [],
+    detail:{},
     activities: [],
     activity: {}
 } 
@@ -28,15 +29,21 @@ const Reducer = (state = initialState, action) =>{
                     ...state,
                     countriesShow: filterCountries
                 }
-        case "CREATE_ACTIVITY":
-            return{
-                ...state,
-                activities: [...state.activities, action.payload]
-            }
+        // case "CREATE_ACTIVITY":
+        //     return{
+        //         ...state,
+        //         activities: [...state.activities, action.payload]
+        //     }
         case "GET_ALL_ACTIVITY":
             return{
                 ...state,
-                activities: [...state.activities]
+                activities: action.payload
+            }
+        case "GET_DETAIL":
+            // console.log(action.payload)
+            return{
+                ...state,
+                detail: action.payload
             }
         case "GET_ACTIVITY":
             return{

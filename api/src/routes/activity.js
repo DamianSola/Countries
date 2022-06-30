@@ -22,11 +22,12 @@ const saveActivity = async (req,res) =>{
 
 const DbActivity = async (req,res) => {
     try{
-        const allActivity = await Tourims.findAll() 
+        const allActivity = await Tourims.findAll({include:Country}) 
         res.json(allActivity)
     }catch(error){
         res.send(console.log(error))
     }
 }
+
 
 module.exports = {saveActivity,DbActivity}

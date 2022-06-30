@@ -1,54 +1,54 @@
 import React, { useEffect, useState } from "react";
-import { getActivity, getCountryById } from "../../redux/action";
+import { getAllActivity, getCountryById } from "../../redux/action";
 import { useParams } from 'react-router-dom';
 // import {connect} from "react-redux"
 import './Country.css'
-import { connect, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import ActivityCard from "../Activities/ActivityCard";
 
 
 const Country = () => {
-    let [counId, setCountId] = useState([])
     const {id} = useParams()
+    console.log(id)
 
-    let {activities} = useSelector(state => state)
-    activities = activities.filter(e => e.country === id)
+    let [counId, setCountId] = useState([])
+    const {activities} = useSelector(state => state)
+    const {detail} = useSelector(state => state)
 
+    console.log(detail.tourims)
+ 
+    const dispatch = useDispatch()
 
-
-    const onGetCountry = async (countryId) => {
-        console.log(countryId)
-        const count = await getCountryById(countryId)
-        // console.log(count.payload)
-        setCountId(count.payload)
-    }
-
-    useEffect(() => onGetCountry(id),[])
+    useEffect(() => {
+        dispatch(getCountryById(id))
+        dispatch(getAllActivity())
+    },[])
    
     return(
-        <div>
+        <div className="all-container">
         <div className="container">
-             <img className="flagg" src={`${counId.flag}`} alt="bandera" />
-             <h2 className="el">{counId.name}</h2>
-             <h3 className="el">Capital: {counId.capital}</h3>
-             <h4 className="el">Continent: {counId.continent}</h4>
-             <h4 className="el">Subregion: {counId.subregion}</h4>
-             <h4 className="el">Population: {counId.population}</h4>
-             <h4 className="el">Area: {counId.area}</h4>
-             <h3 className="el">{counId.id}</h3>
+             <img className="flagg" src={`${detail.flag}`} alt="bandera" />
+             <h2 className="el">{detail.name}</h2>
+             <h3 className="el">Capital: {detail.capital}</h3>
+             <h4 className="el">Continent: {detail.continent}</h4>
+             <h4 className="el">Subregion: {detail.subregion}</h4>
+             <h4 className="el">Population: {detail.population}</h4>
+             <h4 className="el">Area: {detail.area}</h4>
+             <h3 className="el">{detail.id}</h3>
         </div>
         <div>
-        {activities && activities.map(a => {
+        {detail.tourims && detail.tourims.length>0 ? detail.tourims.map(a => {
                 return <ActivityCard
                 id={a.id}
                 name = {a.name}
                 durations = {a.durations}
                 dificult = {a.dificult}
                 season = {a.season}
-                country = {a.country}
+                country = {[detail]}
                 key={a.id}
                 />
-            })}
+            }): <h1 >Sin activididades</h1>}
+           
         </div>
         </div>
     )

@@ -73,6 +73,15 @@ router.get("/countries/:id",async (req,res)=>{
 
 router.post('/activity', saveActivity)
 router.get('/activity', DbActivity)
+router.delete('/activity/:id', async (req,res) => {
+    let {id} = req.params;
+    try{
+        await Tourims.destroy({where: {id}})
+        res.send({msg:`la actictividad numero ${id} fue eliminada`})
+    }catch(err){
+        console.log(err)
+    }
+})
 
    
 module.exports = router;

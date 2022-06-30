@@ -27,13 +27,16 @@ export const getCountry = (name) => {
 }
 // getCountry('argeNtina')
 
-export const getCountryById = async (id) =>{
-    const oneCountry = await axios.get(`http://localhost:3001/countries/${id}`)
-    // console.log(oneCountry.data)
-    return({
-        type: "GET_COUNTRY",
-        payload: oneCountry.data
-    })
+export const getCountryById =  (id) =>{
+    return function (dispatch){
+        axios.get(`http://localhost:3001/countries/${id}`)
+        .then((res) => {
+            dispatch({
+                type:"GET_DETAIL",
+                payload: res.data
+            })
+        })
+    }
 }
 
 // getCountryById('ARG')
@@ -44,20 +47,25 @@ export const filterByContinent =  (continent) =>{
     }
 }
 // getCountryByContinent('Americas')
-var id = 0
 
-export const createActivity = ({name,dificult,season,durations,country}) => {
-    id++
-    return({
-        type: "CREATE_ACTIVITY",
-        payload: {name,dificult,season,durations,country,id:id}
-    })
+export const createActivity = (newActivity) => {
+    axios.post(`http://localhost:3001/activity`,newActivity)
+    // return({
+    //     type: "CREATE_ACTIVITY",
+    //     payload: newActivity
+    // })
 }
 
 
 export const getAllActivity = ()=>{
-    return {
-        type:"GET_ALL_ACTIVITY",
+    return function(dispatch){
+        axios.get("http://localhost:3001/activity")
+        .then(res =>  { 
+            dispatch({
+                type: "GET_ALL_ACTIVITY",
+                payload: res.data
+            })
+        })
     }
 }
 
@@ -70,6 +78,7 @@ export const getActivity = async(id) => {
 }
 
 export const deleteActivity = (id) => {
+    axios.delete("http://localhost:3001/activity/"+id)
     return({
         type: "DELETE_ACTIVITY",
         payload: id

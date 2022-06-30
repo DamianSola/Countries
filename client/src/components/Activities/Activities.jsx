@@ -12,6 +12,8 @@ const Activities = () =>{
 
     const dispatch = useDispatch()
     const {activities} = useSelector(state => state)
+    // console.log(activities.map(e => e.countries))
+
 
 
     useEffect(()=>{
@@ -21,7 +23,8 @@ const Activities = () =>{
 
     if(activities.length !== 0){
         return(
-            <div className="container">
+            <div className="container-act">
+             
             {activities && activities.map(a => {
                 return <ActivityCard
                 id={a.id}
@@ -29,7 +32,8 @@ const Activities = () =>{
                 durations = {a.durations}
                 dificult = {a.dificult}
                 season = {a.season}
-                country = {a.country}
+                country = {a.countries}
+                // countryFlag= {a.countries.map(e => e.flag)}
                 key={a.id}
                 />
             })}

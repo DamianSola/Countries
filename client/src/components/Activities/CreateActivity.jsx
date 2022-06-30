@@ -14,26 +14,44 @@ const CreateActivity = () =>{
         dificult:"",
         durations:"",
         season:"",
-        country:"",
+        country:[],
         id:""
     })
-    
+
+    const [onlyCountries, setOnlyCountries] = useState([])
+    const {countries} = useSelector(state => state)
+    // console.log(countries[0])
     
     
     let {countriesShow} = useSelector(state => state)
     const dispatch = useDispatch()
+
     
     function handleOnChange(event){
-        setActivity({
-            ...activity,
-            [event.target.name] : event.target.value
-        })
+        console.log(event.target.value)
+        if(event.target.name === "country"){
+            const filt = countries.find(e => e.id === event.target.value)
+            setActivity({
+                ...activity,
+                [event.target.name]: activity.country.concat(event.target.value)
+            })
+            setOnlyCountries([...onlyCountries, filt])
+            console.log(onlyCountries)
+        }else{
+            setActivity({
+                ...activity,
+                [event.target.name] : event.target.value
+            })
+        }
+        console.log(activity.country)
     }
 
     
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(createActivity(activity))
+        alert("nueva actividad creada")
+        setActivity({})
     }
 
 
@@ -45,7 +63,7 @@ const CreateActivity = () =>{
     
     return(
         <div className="contt">
-            <div><NavBar/></div>
+            {/* <div><NavBar/></div> */}
             <div className="container-creator">
             <form onSubmit={handleSubmit}>
                 <div className="elemet">
@@ -67,7 +85,7 @@ const CreateActivity = () =>{
                 <div className="elemet">
                 <label>Elegir Pais: </label>
                 {/* <input list="paises" /> */}
-                <select name="country" onChange={handleOnChange} value={activity.country}>
+                <select name="country" onChange={handleOnChange} value={activity.country} multiple>
                     {countriesShow.map(c => {
                         return <option key={c.id} value={c.id}>{c.name}</option>
                     })}
@@ -75,6 +93,17 @@ const CreateActivity = () =>{
                 <button type="submit" id="agr">Agregar</button>
                 </div>
             </form>
+            </div>
+            <div className="showcountry">
+
+            {onlyCountries && onlyCountries.map(e => {
+                return(
+                    <div key={e.id} className="show">
+                        <img src={e.flag} width="70px" />
+                        <button id="delete-count">x</button>  
+                    </div>
+                )
+            })}
             </div>
         </div>
     )
