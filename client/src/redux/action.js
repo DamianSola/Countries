@@ -49,11 +49,15 @@ export const filterByContinent =  (continent) =>{
 // getCountryByContinent('Americas')
 
 export const createActivity = (newActivity) => {
-    axios.post(`http://localhost:3001/activity`,newActivity)
-    // return({
-    //     type: "CREATE_ACTIVITY",
-    //     payload: newActivity
-    // })
+    return function(dispatch){
+        axios.post("http://localhost:3001/activity",newActivity)
+        .then(() => {
+            dispatch({
+                type: "CREATED",
+                payload: "ready"
+            })
+        })
+    }
 }
 
 
