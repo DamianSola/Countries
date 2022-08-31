@@ -9,8 +9,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 20px 280px;
+    /* margin: 20px 280px; */
+    margin: 10% 20%
 }
+
+@media (max-width: 890px) {
+    .cont-intro{
+        margin: 10% 0;
+    }
+}
+
+
 
 .texto{
     display: inline-block;
@@ -24,4 +33,19 @@
     font-family: cursive;
     width: 630px;
     height: 400px;
+}
+
+@media (max-width: 412px){
+    .cont-intro{
+        display: block;
+        justify-content: center;
+        width: 410px;
+        height: 800px;
+        background-attachment: fixed;
+    }
+    .texto{
+        width: 360px;
+        height: 120rem;
+        background-repeat: repeat-y;
+    }
 }

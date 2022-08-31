@@ -38,7 +38,7 @@ export const Countries = () =>{
 
     
     return (
-        <div>
+        <div className="countries-cont">
             <NavBar/>
             {loading && <Loading/>}
             <Paginacion 

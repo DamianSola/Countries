@@ -1,11 +1,21 @@
 .countries-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     flex-wrap: wrap;
-    width: 100%;
 }
 
+.countries-cont{
+    display: block;
+    justify-content: center;
+}
+
+@media (max-width: 375px) {
+    /* .countries-container{
+        width: 300%;
+
+    } */
+}
 .filter {
     display: flex;
     flex-direction:row;

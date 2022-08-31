@@ -2,7 +2,7 @@
     display: block;
     /* justify-content: space-between; */
     margin: 20px;
-    width: 30rem;
+    width: 25rem;
     min-height: 4rem;
     border: solid 2px;
     border-radius: 5px;
@@ -10,6 +10,13 @@
     background: url("https://us.123rf.com/450wm/123bogdan/123bogdan1009/123bogdan100900056/7814200-postal-vintage-en-blanco.jpg?ver=6");
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+@media (max-width: 390px) {
+    .cards{
+        width: 24rem;
+        margin: 10px 0;
+    }
 }
 
 .namee{

@@ -1,13 +1,22 @@
 .contt{
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+  display: block;
+    /* flex-direction: column; */
 }
 
 .container-creator{
-    margin: 50px 300px;
+    margin: 10% 30%;
     background-color: rgb(28, 136, 199);
     width: 30rem;
     height: 35rem;
+}
+
+@media (max-width: 390px) {
+    .container-creator{
+        margin: auto;
+        width: 30rem;
+
+    }
 }
 .showcountry{
     margin-top:10px;
