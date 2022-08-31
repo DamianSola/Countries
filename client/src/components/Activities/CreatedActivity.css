@@ -14,16 +14,18 @@
 @media (max-width: 390px) {
     .container-creator{
         margin: auto;
-        width: 30rem;
+        width: 25rem;
 
     }
 }
 .showcountry{
     margin-top:10px;
     display:inline-flex;
-    background-color: rgb(28, 136, 199);
+    /* background-color: rgb(28, 136, 199); */
     min-height: 4rem;
     width: 30rem;
+    flex-wrap: wrap;
+
 }
 
 #delete-count{
