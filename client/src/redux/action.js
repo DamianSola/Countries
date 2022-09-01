@@ -3,7 +3,7 @@ const axios = require('axios')
 
 export const getAllCountries = () => {
     return function (dispatch) {
-        return axios.get('http://localhost:3001/countries')
+        return axios.get('/countries')
         .then((res) => {
             dispatch({
                 type: "GET_ALL_COUNTRIES",
@@ -16,7 +16,7 @@ export const getAllCountries = () => {
 
 export const getCountry = (name) => {
     return function (dispatch){
-        return axios.get(`http://localhost:3001/countries/?name=${name}`)
+        return axios.get(`/countries/?name=${name}`)
         .then((res) => { 
             dispatch({
                 type: "GET_COUNTRY",
@@ -29,7 +29,7 @@ export const getCountry = (name) => {
 
 export const getCountryById =  (id) =>{
     return function (dispatch){
-        axios.get(`http://localhost:3001/countries/${id}`)
+        axios.get(`/countries/${id}`)
         .then((res) => {
             dispatch({
                 type:"GET_DETAIL",
@@ -50,7 +50,7 @@ export const filterByContinent =  (continent) =>{
 
 export const createActivity = (newActivity) => {
     return function(dispatch){
-        axios.post("http://localhost:3001/activity",newActivity)
+        axios.post("/activity",newActivity)
         .then(() => {
             dispatch({
                 type: "CREATED",
@@ -63,7 +63,7 @@ export const createActivity = (newActivity) => {
 
 export const getAllActivity = ()=>{
     return function(dispatch){
-        axios.get("http://localhost:3001/activity")
+        axios.get("/activity")
         .then(res =>  { 
             dispatch({
                 type: "GET_ALL_ACTIVITY",
@@ -82,7 +82,7 @@ export const getActivity = async(id) => {
 }
 
 export const deleteActivity = (id) => {
-    axios.delete("http://localhost:3001/activity/"+id)
+    axios.delete("/activity/"+id)
     return({
         type: "DELETE_ACTIVITY",
         payload: id
